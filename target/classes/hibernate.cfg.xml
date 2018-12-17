@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost/mariaTest</property>
+		<property name="connection.username">mark</property>
+		<property name="connection.password">e23s5</property>
+		
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<mapping resource="idv/onlycheng/vo/User.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
