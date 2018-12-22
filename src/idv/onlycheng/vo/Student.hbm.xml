@@ -2,13 +2,17 @@
 <!DOCTYPE hibernate-mapping PUBLIC 
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-    
+
 <hibernate-mapping>
-	<class name="idv.onlycheng.vo.User" table="t_class">
+	<class name="idv.onlycheng.vo.Student" table="t_student">
 		<id name="id">
 			<generator class="native" />
 		</id>
-		<property name="name"/>
-		<property name="address"/>
+		<property name="name" />
+		<property name="age" />
+		<property name="sex" />
+		<!-- 多對一的關連映射 -->
+		<!-- name為屬性名稱 column為外鍵名稱 -->
+		<many-to-one name="cluss" column="cluss_id" />
 	</class>
 </hibernate-mapping>

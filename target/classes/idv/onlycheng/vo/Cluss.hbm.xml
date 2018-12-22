@@ -4,11 +4,11 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
     
 <hibernate-mapping>
-	<class name="idv.onlycheng.vo.User" table="t_class">
+	<class name="idv.onlycheng.vo.Cluss" table="t_cluss">
 		<id name="id">
-			<generator class="native" />
+			<generator class="native"></generator>
 		</id>
-		<property name="name"/>
-		<property name="address"/>
+		<property name="name" />
+		<property name="address" />
 	</class>
 </hibernate-mapping>

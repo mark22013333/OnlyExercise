@@ -4,11 +4,11 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
     
 <hibernate-mapping>
-	<class name="idv.onlycheng.vo.User" table="t_user">
-		<id name="id" column="id">
+	<class name="idv.onlycheng.vo.User" table="t_class">
+		<id name="id">
 			<generator class="native" />
 		</id>
-		<property name="name" column="name" type="java.lang.String"></property>
-		<property name="age" column="age" type="int"></property>
+		<property name="name"/>
+		<property name="address"/>
 	</class>
 </hibernate-mapping>
