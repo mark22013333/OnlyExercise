@@ -8,20 +8,22 @@
 		<property name="connection.url">jdbc:mysql://localhost/mariaTest</property>
 		<property name="connection.username">mark</property>
 		<property name="connection.password">e23s5</property>
-		
+
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		
+
 		<!-- hbm2ddl.auto 該屬性用於配置，是否將映設訊息轉換為DDL -->
 		<!-- create 每次執行都會先刪除表再創建表 -->
 		<!-- update 檢查資料庫表是否存在，若不存在則創建表，通常使用update -->
-		<!-- create-drop  -->
-<!-- 		<property name="hbm2ddl.auto">update</property> -->
-		
+		<!-- create-drop -->
+		<!-- <property name="hbm2ddl.auto">update</property> -->
+
 		<!-- SQL方言 -->
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		
-		<mapping resource="idv/onlycheng/vo/Cluss.hbm.xml" />
-		<mapping resource="idv/onlycheng/vo/Student.hbm.xml" />
+
+		<mapping resource="idv/onlycheng/vo/Card.hbm.xml" />
+		<mapping resource="idv/onlycheng/vo/Person.hbm.xml" />
+		<!-- <mapping resource="idv/onlycheng/vo/Cluss.hbm.xml" /> -->
+		<!-- <mapping resource="idv/onlycheng/vo/Student.hbm.xml" /> -->
 	</session-factory>
 </hibernate-configuration>

@@ -104,6 +104,8 @@ public class HibernateTestDemo {
 		System.out.println("===Create DB complete");
 	}
 
+	// 一對多關連時保存資料會多出N條更新語句，效率較低
+	// 一般不用一對多來管理數據
 	@Test
 	public void testInit() {
 		try {
@@ -121,31 +123,54 @@ public class HibernateTestDemo {
 			s1.setAge(30);
 			s1.setSex("male");
 			// 設定學生的外鍵，如果不設值，保存的學生將沒有外鍵值
-			s1.setCluss(c1);
+			// s1.setCluss(c1);
 
 			Student s2 = new Student();
 			s2.setName("Mark");
 			s2.setAge(31);
 			s2.setSex("male");
-			s2.setCluss(c2);
+			// s2.setCluss(c2);
 
 			Student s3 = new Student();
 			s3.setName("coco");
 			s3.setAge(28);
 			s3.setSex("female");
-			s3.setCluss(c1);
+			// s3.setCluss(c1);
 
 			session.save(s1);
 			session.save(s2);
 			session.save(s3);
+
+			// 關連關係由"一"的那端控制
+			c1.getStudents().add(s1);
+			c1.getStudents().add(s3);
+			c2.getStudents().add(s2);
+
+			session.save(s1);
+			session.save(s2);
+
 			tx.commit();
 			System.out.println("===commit");
 
+			Cluss c11 = (Cluss) session.get(Cluss.class, 1);
+			System.out.println(c11.getName() + "\t" + c11.getAddress());
+			System.out.println("====================");
+			for (Student student : c11.getStudents()) {
+				System.out.println(student.getName() + "\t" + student.getAge());
+			}
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+			Cluss c12 = (Cluss) session.get(Cluss.class, 2);
+			System.out.println(c12.getName() + "\t" + c12.getAddress());
+			System.out.println("------------------------------");
+			for (Student s : c12.getStudents()) {
+				System.out.println(s.getName() + "\t" + s.getAge());
+			}
 			// 關連映設主要為查詢服務，當具有多對一的關係時，在獲取"多"的一端的訊息可以直接獲取"一"的那端的訊息
-			Student student = (Student) session.get(Student.class, 1);
-			System.out.println(student.getName() + "-------" + student.getAge());
-			System.out.println("===========================");
-			System.out.println(student.getCluss().getName() + "----------" + student.getCluss().getAddress());
+			// Student student = (Student) session.get(Student.class, 1);
+			// System.out.println(student.getName() + "-------" + student.getAge());
+			// System.out.println("===========================");
+			// System.out.println(student.getCluss().getName() + "----------" +
+			// student.getCluss().getAddress());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -156,14 +181,15 @@ public class HibernateTestDemo {
 		}
 	}
 
-	// @Test
-	// public void testGet() {
-	// Student student = (Student) session.get(Student.class, 1);
-	// System.out.println(student.getName() + "-------" + student.getAge());
-	// System.out.println("===========================");
-	// System.out.println(student.getCluss().getName() + "----------" +
-	// student.getCluss().getAddress());
-	// }
+	@Test
+	public void testGet() {
+
+		// Student student = (Student) session.get(Student.class, 1);
+		// System.out.println(student.getName() + "-------" + student.getAge());
+		// System.out.println("===========================");
+		// System.out.println(student.getCluss().getName() + "----------" +
+		// student.getCluss().getAddress());
+	}
 
 	// @Test
 	// public void testSave() {

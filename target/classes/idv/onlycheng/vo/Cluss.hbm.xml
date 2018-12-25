@@ -10,5 +10,12 @@
 		</id>
 		<property name="name" />
 		<property name="address" />
+		<!-- 一對多的關連 name為屬性名 -->
+		<set name="students" inverse="true">
+			<!-- coulmn指定外鍵名 --> 
+			<key column="cluss_id"></key> 
+			<!-- 指定"多"的那一端的類型 -->
+			<one-to-many class="idv.onlycheng.vo.Student"/>
+		</set>
 	</class>
 </hibernate-mapping>

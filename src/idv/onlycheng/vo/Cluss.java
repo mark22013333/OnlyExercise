@@ -1,51 +1,47 @@
 package idv.onlycheng.vo;
 
-public class Cluss {
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Cluss implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private int id;
 	private String address;
 
-	/**
-	 * @return name
-	 */
+	private Set<Student> students = new HashSet<>();
+
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
+
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name
-	 *                 set name
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return id
-	 */
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id
-	 *               set id
-	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return address
-	 */
 	public String getAddress() {
 		return address;
 	}
 
-	/**
-	 * @param address
-	 *                    set address
-	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}

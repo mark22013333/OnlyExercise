@@ -4,16 +4,13 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="idv.onlycheng.vo.Student" table="t_student">
+	<class name="idv.onlycheng.vo.Person" table="t_person">
 		<id name="id">
 			<generator class="native" />
 		</id>
 		<property name="name" />
-		<property name="age" />
 		<property name="sex" />
-		<!-- 多對一的關連映射 -->
-		<!-- name為屬性名 column為外鍵名 -->
-		<many-to-one name="cluss"
-			column="cluss_id"></many-to-one>
+		<!-- 當多對一時，在多的一方的外鍵不重複時，其實質上就是一對一 -->
+		<many-to-one name="card" column="card_id" unique="true" />
 	</class>
 </hibernate-mapping>

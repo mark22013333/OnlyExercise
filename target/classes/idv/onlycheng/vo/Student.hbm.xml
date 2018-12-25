@@ -12,7 +12,8 @@
 		<property name="age" />
 		<property name="sex" />
 		<!-- 多對一的關連映射 -->
-		<!-- name為屬性名稱 column為外鍵名稱 -->
-		<many-to-one name="cluss" column="cluss_id" />
+		<!-- name為屬性名 column為外鍵名 -->
+		<many-to-one name="cluss"
+			column="cluss_id"></many-to-one>
 	</class>
 </hibernate-mapping>
