@@ -2,7 +2,7 @@ package idv.onlycheng.vo;
 
 public class Card {
 
-	private Integer id;
+	private String id;
 	private String address;
 	private Person person;
 
@@ -14,11 +14,11 @@ public class Card {
 		this.person = person;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

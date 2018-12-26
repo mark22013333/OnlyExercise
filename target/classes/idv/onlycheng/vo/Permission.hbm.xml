@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="idv.onlycheng.vo.Permission" table="t_permission">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="name" />
+		<set name="roles" table="t_role_permission" inverse="true">
+			<key column="pid"></key>
+			<many-to-many column="rid" class="idv.onlycheng.vo.Role" />
+		</set>
+	</class>
+</hibernate-mapping>

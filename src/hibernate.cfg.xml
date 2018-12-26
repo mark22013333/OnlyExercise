@@ -21,8 +21,10 @@
 		<!-- SQL方言 -->
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-		<mapping resource="idv/onlycheng/vo/Card.hbm.xml" />
-		<mapping resource="idv/onlycheng/vo/Person.hbm.xml" />
+		<mapping resource="idv/onlycheng/vo/Role.hbm.xml" />
+		<mapping resource="idv/onlycheng/vo/Permission.hbm.xml" />
+		<!-- <mapping resource="idv/onlycheng/vo/Card.hbm.xml" /> -->
+		<!-- <mapping resource="idv/onlycheng/vo/Person.hbm.xml" /> -->
 		<!-- <mapping resource="idv/onlycheng/vo/Cluss.hbm.xml" /> -->
 		<!-- <mapping resource="idv/onlycheng/vo/Student.hbm.xml" /> -->
 	</session-factory>

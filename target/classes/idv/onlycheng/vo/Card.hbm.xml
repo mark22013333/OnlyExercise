@@ -5,10 +5,10 @@
 
 <hibernate-mapping>
 	<class name="idv.onlycheng.vo.Card" table="t_card">
-		<id name="id" column="id" type="int">
-			<generator class="native" />
+		<id name="id">
+			<generator class="assigned" />
 		</id>
 		<property name="address" />
-		<one-to-one name="person" property-ref="card" />
+		<one-to-one name="person" />
 	</class>
 </hibernate-mapping>

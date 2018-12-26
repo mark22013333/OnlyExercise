@@ -6,11 +6,15 @@
 <hibernate-mapping>
 	<class name="idv.onlycheng.vo.Person" table="t_person">
 		<id name="id">
-			<generator class="native" />
+			<generator class="foreign">
+				<param name="property">card</param>
+			</generator>
 		</id>
 		<property name="name" />
 		<property name="sex" />
+		<!-- 基於主鍵的一對一，constrained為true，將添加外鍵約束 -->
+		<one-to-one name="Card" constrained="true" />
 		<!-- 當多對一時，在多的一方的外鍵不重複時，其實質上就是一對一 -->
-		<many-to-one name="card" column="card_id" unique="true" />
+		<!-- <many-to-one name="card" column="card_id" unique="true" /> -->
 	</class>
 </hibernate-mapping>

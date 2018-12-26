@@ -11,11 +11,13 @@ import org.junit.Test;
 import idv.onlycheng.Util.HibernateUtil;
 import idv.onlycheng.vo.Card;
 import idv.onlycheng.vo.Cluss;
+import idv.onlycheng.vo.Permission;
 import idv.onlycheng.vo.Person;
+import idv.onlycheng.vo.Role;
 import idv.onlycheng.vo.Student;
 import idv.onlycheng.vo.User;
 
-public class HibernateTestDemo2 {
+public class HibernateTestDemo3 {
 	Session session = null;
 	Transaction tx = null;
 
@@ -34,46 +36,50 @@ public class HibernateTestDemo2 {
 	}
 
 	@Test
-	public void testGet() {
-
-	}
-
-	@Test
 	public void testInit() {
 		try {
-			Card c1 = new Card();
-			c1.setId("1001");
-			c1.setAddress("台北");
-			Card c2 = new Card();
-			c2.setId("1002");
-			c2.setAddress("台中");
-			Person p1 = new Person();
-			p1.setName("小李");
-			p1.setSex("Male");
-			// 設定外鍵關連
-//			p1.setCard(c1);
-			Person p2 = new Person();
-			p2.setName("小張");
-			p2.setSex("Male");
-			p2.setCard(c2);
-			session.save(c1);
-			session.save(c2);
+			Role r1 = new Role();
+			r1.setName("command");
+			Role r2 = new Role();
+			r2.setName("VIP");
+			Permission p1 = new Permission();
+			p1.setName("read");
+			Permission p2 = new Permission();
+			p2.setName("add");
+			Permission p3 = new Permission();
+			p3.setName("delete");
+			Permission p4 = new Permission();
+			p4.setName("modify");
 			session.save(p1);
 			session.save(p2);
+			session.save(p3);
+			session.save(p4);
+			// 設定關係
+			r1.getPermissions().add(p1);
+			r1.getPermissions().add(p2);
+			r2.getPermissions().add(p1);
+			r2.getPermissions().add(p2);
+			r2.getPermissions().add(p3);
+			r2.getPermissions().add(p4);
+			session.save(r1);
+			session.save(r2);
 			tx.commit();
 
 			// testGet()
-			Person person = (Person) session.get(Person.class, 1001);
-			System.out.println(person.getName() + "\t" + person.getSex());
+			Role role = (Role) session.get(Role.class, 1);
+			System.out.println(role.getName());
 			System.out.println("====================");
-			System.out.println(person.getCard().getAddress());
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
-			Card card = (Card) session.get(Card.class, "1001");
-			System.out.println(card.getAddress());
-			System.out.println("---------------------");
-			System.out.println(card.getPerson().getName() + "\t" + card.getPerson().getSex());
-			// System.out.println(person.getCard().getPerson());
-			// System.out.println(person);
+			for (Permission p : role.getPermissions()) {
+				System.out.println(p.getName());
+			}
+			System.out.println("====================");
+			Permission p = (Permission) session.get(Permission.class, 1);
+			System.out.println(p.getName());
+			System.out.println("-------------");
+			for (Role r : p.getRoles()) {
+				System.out.println(r.getName());
+			}
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

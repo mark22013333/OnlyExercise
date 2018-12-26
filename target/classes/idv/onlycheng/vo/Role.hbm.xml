@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="idv.onlycheng.vo.Role" table="t_role">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="name" />
+		<!-- table為連結表的名稱 -->
+		<set name="permissions" table="t_role_permission">
+			<!-- key指明當前類別在關連表中的外鍵 -->
+			<key column="rid"></key>
+			<!-- column多對多的另一方在關連表中的外鍵 -->
+			<many-to-many column="pid" class="idv.onlycheng.vo.Permission"/>
+		</set>
+	</class>
+</hibernate-mapping>

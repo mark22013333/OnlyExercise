@@ -1,16 +1,16 @@
 package idv.onlycheng.vo;
 
 public class Person {
-	private Integer id;
+	private String id;
 	private String name;
 	private String sex;
 	private Card card;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
