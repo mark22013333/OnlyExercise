@@ -11,7 +11,14 @@
 
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-
+		<!-- 開啟二級快取 -->
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.provider_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<!-- 開啟查詢快取 -->
+		<property name="cache.use_query_cache">true</property>
+	
+		
 		<!-- hbm2ddl.auto 該屬性用於配置，是否將映設訊息轉換為DDL -->
 		<!-- create 每次執行都會先刪除表再創建表 -->
 		<!-- update 檢查資料庫表是否存在，若不存在則創建表，通常使用update -->
@@ -30,7 +37,7 @@
 		<!-- <mapping resource="idv/onlycheng/vo/Card.hbm.xml" /> -->
 		<!-- <mapping resource="idv/onlycheng/vo/Person.hbm.xml" /> -->
 		<mapping resource="idv/onlycheng/vo/User.hbm.xml" />
-<!-- 		<mapping resource="idv/onlycheng/vo/Cluss.hbm.xml" /> -->
-<!-- 		<mapping resource="idv/onlycheng/vo/Student.hbm.xml" /> -->
+		<mapping resource="idv/onlycheng/vo/Cluss.hbm.xml" />
+		<mapping resource="idv/onlycheng/vo/Student.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

@@ -15,6 +15,8 @@
 		<!-- 多對一的關連映射 -->
 		<!-- name為屬性名 column為外鍵名 -->
 		<!-- cascade="save-update" -->
-		<many-to-one name="cluss" column="cluss_id" />
+		<!-- lazy的值預設就是proxy，也就是lazy="true" -->
+		<!-- lazy="false"等於即時載入 -->
+		<many-to-one name="cluss" column="cluss_id" lazy="proxy" fetch="select" />
 	</class>
 </hibernate-mapping>

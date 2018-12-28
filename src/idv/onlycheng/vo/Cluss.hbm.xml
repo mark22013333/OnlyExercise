@@ -4,14 +4,14 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="idv.onlycheng.vo.Cluss" table="t_cluss">
+	<class name="idv.onlycheng.vo.Cluss" table="t_cluss" lazy="false">
 		<id name="id">
 			<generator class="native" />
 		</id>
 		<property name="name" />
 		<property name="address" />
 
-		<set name="students" inverse="false" cascade="save-update">
+		<set name="students" lazy="extra" inverse="true" cascade="save-update">
 			<key column="cluss_id"></key>
 			<one-to-many class="idv.onlycheng.vo.Student"/>
 		</set>

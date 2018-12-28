@@ -1,0 +1,20 @@
+<ehcache>
+	<diskStore path="java.io.tmpdir"/>
+	
+	
+	<!-- 
+		maxElementsInMemory 最多快取元素的個數
+		eternal 是否永久儲存
+		timeToIdleSeconds 空閒時間
+		timeToLiveSeconds 存活時間
+		overflowToDisk 是否溢出到硬碟 true就會寫入硬碟
+	 -->
+	
+	<defaultCache 
+		maxElementsInMemory="10000"
+		eternal="false"
+		timeToIdleSeconds="120"
+		timeToLiveSeconds="120"
+		overflowToDisk="true"
+		/>
+</ehcache>

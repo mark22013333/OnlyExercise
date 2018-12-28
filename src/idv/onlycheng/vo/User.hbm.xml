@@ -5,6 +5,7 @@
 
 <hibernate-mapping package="idv.onlycheng.vo">
 	<class name="User" table="t_user">
+		<cache usage="read-only"/>
 		<id name="id">
 			<generator class="native" />
 		</id>
