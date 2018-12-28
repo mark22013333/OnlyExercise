@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import idv.onlycheng.Util.HibernateUtil;
-import idv.onlycheng.vo.Cluss;
+import idv.onlycheng.vo.Subject;
 import idv.onlycheng.vo.Student;
 import idv.onlycheng.vo.User;
 
@@ -109,10 +109,10 @@ public class HibernateTestDemo {
 	@Test
 	public void testInit() {
 		try {
-			Cluss c1 = new Cluss();
+			Subject c1 = new Subject();
 			c1.setName("103");
 			c1.setAddress("A-1");
-			Cluss c2 = new Cluss();
+			Subject c2 = new Subject();
 			c2.setName("301");
 			c2.setAddress("B-2");
 			session.save(c1);
@@ -152,14 +152,14 @@ public class HibernateTestDemo {
 			tx.commit();
 			System.out.println("===commit");
 
-			Cluss c11 = (Cluss) session.get(Cluss.class, 1);
+			Subject c11 = (Subject) session.get(Subject.class, 1);
 			System.out.println(c11.getName() + "\t" + c11.getAddress());
 			System.out.println("====================");
 			for (Student student : c11.getStudents()) {
 				System.out.println(student.getName() + "\t" + student.getAge());
 			}
 			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-			Cluss c12 = (Cluss) session.get(Cluss.class, 2);
+			Subject c12 = (Subject) session.get(Subject.class, 2);
 			System.out.println(c12.getName() + "\t" + c12.getAddress());
 			System.out.println("------------------------------");
 			for (Student s : c12.getStudents()) {

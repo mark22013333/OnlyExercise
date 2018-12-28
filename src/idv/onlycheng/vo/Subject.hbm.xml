@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="idv.onlycheng.vo.Subject" table="t_subject">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" />
+		<property name="address" />
+		<!-- 一對多的關連 name為屬性名 -->
+		<!-- <set name="students" inverse="true"> -->
+		<!-- coulmn指定外鍵名 -->
+		<!-- <key column="cluss_id"></key> -->
+		<!-- 指定"多"的那一端的類型 -->
+		<!-- <one-to-many class="idv.onlycheng.vo.Student"/> -->
+	</class>
+</hibernate-mapping>

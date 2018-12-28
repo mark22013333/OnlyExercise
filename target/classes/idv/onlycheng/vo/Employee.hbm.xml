@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="idv.onlycheng.vo.Employee" table="t_employee">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" />
+		<property name="age" />
+		<component name="links">
+			<property name="phone"/>
+			<property name="qq"/>
+			<property name="email"/>
+		</component>
+		<!-- 基於主鍵的一對一，constrained為true，將添加外鍵約束 -->
+		<!-- <one-to-one name="Card" constrained="true" /> -->
+		<!-- 當多對一時，在多的一方的外鍵不重複時，其實質上就是一對一 -->
+		<!-- <many-to-one name="card" column="card_id" unique="true" /> -->
+	</class>
+</hibernate-mapping>

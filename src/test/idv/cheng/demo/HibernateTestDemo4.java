@@ -11,11 +11,15 @@ import org.junit.Test;
 import idv.onlycheng.Util.HibernateUtil;
 import idv.onlycheng.vo.Card;
 import idv.onlycheng.vo.Subject;
+import idv.onlycheng.vo.Employee;
+import idv.onlycheng.vo.Links;
+import idv.onlycheng.vo.Permission;
 import idv.onlycheng.vo.Person;
+import idv.onlycheng.vo.Role;
 import idv.onlycheng.vo.Student;
 import idv.onlycheng.vo.User;
 
-public class HibernateTestDemo2 {
+public class HibernateTestDemo4 {
 	Session session = null;
 	Transaction tx = null;
 
@@ -34,46 +38,24 @@ public class HibernateTestDemo2 {
 	}
 
 	@Test
-	public void testGet() {
-
-	}
-
-	@Test
 	public void testInit() {
 		try {
-			Card c1 = new Card();
-			c1.setId("1001");
-			c1.setAddress("台北");
-			Card c2 = new Card();
-			c2.setId("1002");
-			c2.setAddress("台中");
-			Person p1 = new Person();
-			p1.setName("小李");
-			p1.setSex("Male");
-			// 設定外鍵關連
-//			p1.setCard(c1);
-			Person p2 = new Person();
-			p2.setName("小張");
-			p2.setSex("Male");
-			p2.setCard(c2);
-			session.save(c1);
-			session.save(c2);
-			session.save(p1);
-			session.save(p2);
+			Links link = new Links();
+			link.setPhone("0912345678");
+			link.setQq("235134");
+			link.setEmail("abc@gmail.com");
+			Employee e = new Employee();
+			e.setName("ABBA");
+			e.setAge(19);
+			e.setLinks(link);
+			session.save(e);
 			tx.commit();
 
 			// testGet()
-			Person person = (Person) session.get(Person.class, 1001);
-			System.out.println(person.getName() + "\t" + person.getSex());
-			System.out.println("====================");
-			System.out.println(person.getCard().getAddress());
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
-			Card card = (Card) session.get(Card.class, "1001");
-			System.out.println(card.getAddress());
-			System.out.println("---------------------");
-			System.out.println(card.getPerson().getName() + "\t" + card.getPerson().getSex());
-			// System.out.println(person.getCard().getPerson());
-			// System.out.println(person);
+			Employee e1 = (Employee) session.get(Employee.class, 1);
+			System.out.println(e1.getName() + "\t" + e.getAge());
+			System.out.println(e.getLinks().getPhone() + "\t" + e.getLinks().getEmail());
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

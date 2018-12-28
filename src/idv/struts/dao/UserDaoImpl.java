@@ -15,7 +15,6 @@ public class UserDaoImpl implements UserDao {
 		try {
 			Session session = HibernateUtil.getSession();
 			List<User> list = session.createCriteria(User.class).list();
-			HibernateUtil.close();
 			return list;
 		} catch (HibernateException e) {
 			// TODO: handle exception

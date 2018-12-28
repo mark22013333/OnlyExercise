@@ -9,6 +9,16 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = -8577996843735729563L;
 
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(String name, Integer age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+
 	private Integer id;
 	private String name;
 	private Integer age;

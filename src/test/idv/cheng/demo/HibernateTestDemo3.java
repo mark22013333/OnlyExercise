@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import idv.onlycheng.Util.HibernateUtil;
 import idv.onlycheng.vo.Card;
-import idv.onlycheng.vo.Cluss;
+import idv.onlycheng.vo.Subject;
 import idv.onlycheng.vo.Permission;
 import idv.onlycheng.vo.Person;
 import idv.onlycheng.vo.Role;
