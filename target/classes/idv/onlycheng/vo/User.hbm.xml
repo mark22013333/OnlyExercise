@@ -2,13 +2,28 @@
 <!DOCTYPE hibernate-mapping PUBLIC 
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-    
-<hibernate-mapping>
-	<class name="idv.onlycheng.vo.User" table="t_user">
+
+<hibernate-mapping package="idv.onlycheng.vo">
+	<class name="User" table="t_user">
 		<id name="id">
 			<generator class="native" />
 		</id>
-		<property name="name"/>
-		<property name="age"/>
+		<property name="name" />
+		<property name="age" />
+		<!-- 引用過濾器時，指定名稱和條件，第一個age是欄位名稱 -->
+		<filter name="userFilter" condition="age>:age"></filter>
 	</class>
+	<!-- 將HQL定義在設定檔中，方便多次使用，名稱在應用中需唯一 -->
+	<query name="findAll">
+		<![CDATA[from User where age<40]]>
+	</query>
+	<sql-query name="findUser">
+		<![CDATA[select * from t_user]]>
+	</sql-query>
+	<!-- 過濾器要放到sql-query後面，否則會有問題 -->
+	<!-- 過濾器的定義 name是過濾器名稱 全局唯一 -->
+	<filter-def name="userFilter">
+		<!-- 過濾器可以攜帶參數，需要指定參數的名稱和類型 -->
+		<filter-param name="age" type="int" />
+	</filter-def>
 </hibernate-mapping>
