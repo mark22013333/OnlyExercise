@@ -3,6 +3,7 @@ package test.idv.cheng.demo;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.LockOptions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
@@ -101,6 +102,24 @@ public class HibernateTestDemo14 {
 				tx.rollback();
 			}
 		}
+	}
+
+	@Test
+	public void test02Optimistic() {
+		User user = (User) session.get(User.class, 1, LockOptions.UPGRADE);
+		// one thread
+		Session s2 = HibernateUtil.getOtherSession();
+		User u2 = (User) s2.get(User.class, 1);
+		u2.setAge(30);
+		s2.beginTransaction();
+		s2.update(u2);
+		s2.getTransaction().commit();
+
+		tx.commit();
+		// two thread
+		// user.setAge(20);
+		// session.update(user);
+		// tx.commit();
 	}
 
 	@After

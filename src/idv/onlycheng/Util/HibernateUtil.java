@@ -33,6 +33,10 @@ public class HibernateUtil {
 		return sessionLocal.get();
 	}
 
+	public static Session getOtherSession() {
+		return factory.openSession();
+	}
+
 	public static void close() {
 		if (sessionLocal.get() != null) {
 			sessionLocal.get().close();

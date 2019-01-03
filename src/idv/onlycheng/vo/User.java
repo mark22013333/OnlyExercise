@@ -22,6 +22,15 @@ public class User implements Serializable {
 	private Integer id;
 	private String name;
 	private Integer age;
+	private int version;
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 
 	/**
 	 * @return id

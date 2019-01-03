@@ -5,10 +5,12 @@
 
 <hibernate-mapping package="idv.onlycheng.vo">
 	<class name="User" table="t_user">
-		<cache usage="read-only"/>
+		<cache usage="read-only" />
 		<id name="id">
 			<generator class="native" />
 		</id>
+		<!-- version必須放在property前面 -->
+		<version name="version"></version>
 		<property name="name" />
 		<property name="age" />
 		<!-- 引用過濾器時，指定名稱和條件，第一個age是欄位名稱 -->
